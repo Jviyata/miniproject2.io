@@ -1,11 +1,11 @@
-/* General styles */
+/* General Styles */
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.7;
     color: #1a1a1a;
     margin: 0;
     padding: 0;
-    background-color: #121212;
+    background-color: #f4f4f4; /* Off-white background */
 }
 
 .container {
@@ -14,10 +14,11 @@ body {
     padding: 20px;
 }
 
+/* Header Styles */
 header {
     text-align: center;
     padding: 60px 0;
-    background-color: #121212;
+    background-color: #333;
     color: #f4f4f4;
     border-radius: 16px;
     margin-bottom: 40px;
@@ -45,10 +46,6 @@ header:hover {
     transform: translateY(-5px);
 }
 
-header:hover {
-    transform: translateY(-5px);
-}
-
 h1 {
     margin: 0;
     font-size: 4em;
@@ -57,7 +54,7 @@ h1 {
 }
 
 h2, h3 {
-    color: #0d0d0d;
+    color: #333;
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -70,27 +67,23 @@ p.intro {
     line-height: 1.8;
 }
 
-/* Section styles */
+/* Section Styles */
 section {
     margin-bottom: 50px;
-    background-color: #1e1e1e;
+    background-color: #e8e8e8; /* Light gray for contrast */
     padding: 35px;
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     transition: box-shadow 0.3s ease, background-color 0.3s;
-    color: #f4f4f4;
+    color: #1a1a1a;
 }
 
 section:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    background-color: #2a2a2a;
+    background-color: #d4d4d4; /* Slightly darker on hover */
 }
 
-section:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Chart and insight container */
+/* Chart and Insight Container */
 .chart-insight-wrapper {
     display: flex;
     gap: 40px;
@@ -107,23 +100,19 @@ section:hover {
 
 .insight-box {
     flex: 1;
-    background-color: #2a2a2a;
-    border-left: 6px solid #f4f4f4;
+    background-color: #ffffff; /* White for better contrast */
+    border-left: 6px solid #1a1a1a;
     padding: 25px;
     border-radius: 10px;
     margin-bottom: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    color: #f4f4f4;
+    color: #1a1a1a;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .insight-box:hover {
-    background-color: #3a3a3a;
+    background-color: #f0f0f0;
     transform: translateY(-5px);
-}
-
-.insight-box:hover {
-    background-color: #eaeaea;
 }
 
 .insight-box h3 {
@@ -139,9 +128,10 @@ section:hover {
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa; /* Light background for visibility */
 }
 
-/* Tooltip styles */
+/* Tooltip Styles */
 .tooltip {
     position: absolute;
     padding: 12px;
@@ -154,7 +144,7 @@ section:hover {
     transition: opacity 0.3s ease;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .chart-insight-wrapper {
         flex-direction: column;
