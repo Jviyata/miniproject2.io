@@ -1,0 +1,187 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #eaecef;
+    padding-bottom: 8px;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #3498db;
+    margin-top: 20px;
+}
+
+.intro {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+/* Chart containers */
+.chart-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.chart-description {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#bar-chart, #line-chart, #bubble-chart {
+    width: 100%;
+    height: 400px;
+    margin: 20px 0;
+}
+
+/* Insight boxes */
+.insight-box {
+    background-color: #f1f8ff;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+.insight-box h3 {
+    margin-top: 0;
+    color: #2980b9;
+}
+
+/* Comparison section */
+.comparison-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.comparison-item {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.comparison-item h3 {
+    margin-top: 0;
+}
+
+.comparison-item ul {
+    padding-left: 20px;
+}
+
+.comparison-item li {
+    margin-bottom: 8px;
+}
+
+.storytelling, .lessons {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* D3 specific styles */
+.axis path,
+.axis line {
+    stroke: #e0e0e0;
+}
+
+.axis text {
+    font-size: 12px;
+    fill: #555;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 14px;
+    z-index: 100;
+}
+
+/* Bar chart specific */
+.bar {
+    fill: #3498db;
+    transition: fill 0.3s;
+}
+
+.bar:hover {
+    fill: #2980b9;
+}
+
+/* Line chart specific */
+.line {
+    fill: none;
+    stroke: #2ecc71;
+    stroke-width: 2;
+}
+
+.dot {
+    fill: #27ae60;
+}
+
+/* Bubble chart specific */
+.bubble {
+    stroke: #fff;
+    stroke-width: 1.5;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.bubble:hover {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column;
+    }
+    
+    #bar-chart, #line-chart, #bubble-chart {
+        height: 300px;
+    }
+}

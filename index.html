@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Airbnb Data Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>New York City Airbnb Data Visualization</h1>
+            <p class="intro">An interactive exploration of Airbnb listings in New York City from 2019, visualizing patterns in pricing, location, and accommodation types.</p>
+        </header>
+
+        <section id="overview">
+            <h2>Dataset Overview</h2>
+            <p>This analysis explores a dataset containing information about 48,895 Airbnb listings in New York City from 2019. The data includes host information, neighborhood details, room types, pricing, and review metrics. The visualizations below highlight key patterns and insights discovered in the data.</p>
+        </section>
+
+        <section id="visualization-section">
+            <div class="chart-container">
+                <h2>Bar Chart: Distribution of Listings by Neighborhood Group</h2>
+                <p class="chart-description">This bar chart shows the distribution of Airbnb listings across New York City's neighborhood groups, highlighting the concentration in Manhattan and Brooklyn.</p>
+                <div id="bar-chart"></div>
+                <div class="insight-box">
+                    <h3>Key Insight</h3>
+                    <p>Manhattan (44%) and Brooklyn (41%) have the highest concentration of listings, accounting for 85% of all NYC Airbnbs in the dataset.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>Line Chart: Average Price Trends by Minimum Nights</h2>
+                <p class="chart-description">This line chart visualizes how average listing prices change based on the minimum stay requirements, revealing pricing strategies.</p>
+                <div id="line-chart"></div>
+                <div class="insight-box">
+                    <h3>Key Insight</h3>
+                    <p>There are distinct pricing patterns based on minimum stay requirements, with certain thresholds showing significant price changes.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>Bubble Chart: Room Type, Price and Reviews Analysis</h2>
+                <p class="chart-description">This complex bubble chart represents multiple dimensions simultaneously: room type (color), number of reviews (x-axis), price (y-axis), and minimum nights (bubble size).</p>
+                <div id="bubble-chart"></div>
+                <div class="insight-box">
+                    <h3>Key Insight</h3>
+                    <p>The visualization reveals clusters that suggest entire homes/apartments generally command higher prices but have fewer reviews compared to private rooms, which tend to have more reviews at lower price points.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison">
+            <h2>Comparing D3.js with Python Visualization</h2>
+            
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <h3>What was easier in Python?</h3>
+                    <ul>
+                        <li>Initial data exploration and statistical analysis</li>
+                        <li>Handling missing values (like the 10,052 missing last_review dates)</li>
+                        <li>Creating correlation matrices and heatmaps</li>
+                        <li>Implementing machine learning models (like the linear regression used)</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-item">
+                    <h3>What was easier in D3.js?</h3>
+                    <ul>
+                        <li>Creating interactive visualizations with tooltips and hover effects</li>
+                        <li>Building custom, animated transitions between data states</li>
+                        <li>Integrating the visualizations directly into a web page</li>
+                        <li>Allowing users to explore specific data points of interest</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="storytelling">
+                <h3>Which tool is better for storytelling?</h3>
+                <p>D3.js offers superior capabilities for storytelling due to its interactive nature, allowing users to explore the NYC Airbnb data themselves. Python was better for the initial analysis and predictive modeling (where we achieved an R² of 0.11), while D3.js excels at creating engaging, web-based presentations that guide users through data insights about neighborhood patterns, pricing strategies, and rental type preferences.</p>
+            </div>
+            
+            <div class="lessons">
+                <h3>Lessons learned about visualization design</h3>
+                <p>Working with this Airbnb dataset, I learned that effective visualizations require careful consideration of which variables to highlight. For example, the bubble chart combining room type, price, reviews, and minimum nights reveals patterns that wouldn't be visible in simpler charts. The most impactful visualizations balance complexity with clarity, providing multiple layers of information while maintaining accessibility, which is especially important when analyzing multi-dimensional data like Airbnb listings.</p>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>The visualizations presented in this project reveal several important patterns in the NYC Airbnb data. We can see clear geographic concentration of listings in Manhattan and Brooklyn, distinct pricing strategies based on room type and minimum stay requirements, and interesting correlations between reviews and pricing. D3.js proved to be a powerful tool for creating custom, interactive visualizations that effectively communicate these complex data relationships in ways that static Python plots could not.</p>
+        </section>
+    </div>
+
+    <script src="main.js" type="module"></script>
+</body>
+</html>>
+</body>
+</html>
