@@ -1,128 +1,93 @@
-// Function to create a bar chart for NYC Airbnb neighborhood data
-export function createBarChart(selector, data) {
-    // Clear any existing SVG
-    d3.select(selector).select('svg').remove();
-    
-    // Set dimensions and margins
-    const margin = { top: 40, right: 30, bottom: 60, left: 60 };
-    const width = document.querySelector(selector).clientWidth - margin.left - margin.right;
+export function createBarChart(data, selector) {
+    // Set the dimensions and margins of the graph
+    const margin = { top: 30, right: 30, bottom: 70, left: 60 };
+    const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
-    
-    // Create SVG element
+
+    // Clear any existing SVG
+    d3.select(selector).html("");
+
+    // Append the svg object to the selector
     const svg = d3.select(selector)
-        .append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-        .append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-    
-    // Create scales
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // X axis
     const x = d3.scaleBand()
-        .domain(data.map(d => d.category))
         .range([0, width])
+        .domain(data.map(d => d.neighborhood))
         .padding(0.2);
     
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
+
+    // Add Y axis
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.value) * 1.1]) // Add 10% padding
+        .domain([0, d3.max(data, d => d.count) * 1.1])
         .range([height, 0]);
     
-    // Add X axis
-    svg.append('g')
-        .attr('class', 'axis x-axis')
-        .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(x));
-    
-    // Add X axis label
-    svg.append("text")
-        .attr("transform", `translate(${width/2}, ${height + margin.bottom - 10})`)
-        .style("text-anchor", "middle")
-        .text("Neighborhood Group");
-    
-    // Add Y axis
-    svg.append('g')
-        .attr('class', 'axis y-axis')
+    svg.append("g")
         .call(d3.axisLeft(y));
-    
-    // Add Y axis label
-    svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x", 0 - (height / 2))
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Number of Listings");
-    
-    // Create tooltip div
-    const tooltip = d3.select("body").append("div")
+
+    // Calculate total for percentage
+    const total = data.reduce((sum, d) => sum + d.count, 0);
+
+    // Create tooltip
+    const tooltip = d3.select("body")
+        .append("div")
         .attr("class", "tooltip")
-        .style("opacity", 0);
-    
-    // Calculate total listings
-    const totalListings = data.reduce((sum, d) => sum + d.value, 0);
-    
-    // Add the bars
-    svg.selectAll('.bar')
+        .style("opacity", 0)
+        .style("position", "absolute")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");
+
+    // Bars
+    svg.selectAll("mybar")
         .data(data)
         .enter()
-        .append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d.category))
-        .attr('width', x.bandwidth())
-        .attr('y', height) // Start at the bottom
-        .attr('height', 0) // Initial height of 0
+        .append("rect")
+        .attr("x", d => x(d.neighborhood))
+        .attr("y", d => y(d.count))
+        .attr("width", x.bandwidth())
+        .attr("height", d => height - y(d.count))
+        .attr("fill", "#69b3a2")
         .on("mouseover", function(event, d) {
-            d3.select(this).transition()
-                .duration(200)
-                .attr('opacity', 0.8);
-            
-            const percentage = ((d.value / totalListings) * 100).toFixed(1);
-            
+            const percentage = ((d.count / total) * 100).toFixed(1);
             tooltip.transition()
                 .duration(200)
-                .style("opacity", 0.9);
-            
-            tooltip.html(`<strong>${d.category}</strong><br>${d.value} listings<br>${percentage}% of total`)
+                .style("opacity", .9);
+            tooltip.html(`${d.neighborhood}<br/>${d.count} listings<br/>${percentage}% of total`)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
+            d3.select(this).attr("fill", "#2E8B57");
         })
         .on("mouseout", function() {
-            d3.select(this).transition()
-                .duration(200)
-                .attr('opacity', 1);
-            
             tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
-        })
-        // Add animation for bars growing up from bottom
-        .transition()
-        .duration(800)
-        .attr('y', d => y(d.value))
-        .attr('height', d => height - y(d.value));
-    
-    // Add title
+            d3.select(this).attr("fill", "#69b3a2");
+        });
+
+    // Add labels
     svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", 0 - (margin.top / 2))
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("font-weight", "bold")
-        .text("Distribution of Airbnb Listings by Neighborhood Group");
-    
-    // Add percentage labels on top of bars
-    svg.selectAll('.label')
-        .data(data)
-        .enter()
-        .append('text')
-        .attr('class', 'label')
-        .attr('x', d => x(d.category) + x.bandwidth() / 2)
-        .attr('y', d => y(d.value) - 5)
-        .attr('text-anchor', 'middle')
-        .text(d => ((d.value / totalListings) * 100).toFixed(0) + '%')
-        .style('font-size', '12px')
-        .style('opacity', 0)
-        .transition()
-        .delay(800)
-        .duration(500)
-        .style('opacity', 1);
+        .attr("transform", `translate(${width/2}, ${height + margin.bottom - 5})`)
+        .text("Neighborhood Group");
+
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left + 15)
+        .attr("x", -height / 2)
+        .text("Number of Listings");
 }
