@@ -1,201 +1,130 @@
-// Function to create a complex bubble chart for Airbnb room types, reviews, and price data
-export function createBubbleChart(selector, data) {
-    // Clear any existing SVG
-    d3.select(selector).select('svg').remove();
-    
-    // Set dimensions and margins
-    const margin = { top: 40, right: 120, bottom: 60, left: 60 };
-    const width = document.querySelector(selector).clientWidth - margin.left - margin.right;
+export function createBubbleChart(data, selector) {
+    // Set the dimensions and margins of the graph
+    const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+    const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
-    
-    // Create SVG element
+
+    // Clear any existing SVG
+    d3.select(selector).html("");
+
+    // Append the svg object to the selector
     const svg = d3.select(selector)
-        .append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-        .append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-    
-    // Create scales
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Add X axis
     const x = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.x) * 1.1])
+        .domain([0, d3.max(data, d => d.reviews) * 1.1])
         .range([0, width]);
     
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+    // Add Y axis
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.y) * 1.1])
+        .domain([0, d3.max(data, d => d.price) * 1.1])
         .range([height, 0]);
     
-    const size = d3.scaleLinear()
-        .domain([d3.min(data, d => d.size), d3.max(data, d => d.size)])
-        .range([4, 15]);
-    
-    // Define color scale for room types
-    const color = d3.scaleOrdinal()
-        .domain(["Entire home/apt", "Private room", "Shared room"])
-        .range(["#1f77b4", "#ff7f0e", "#2ca02c"]);
-    
-    // Add X axis
-    svg.append('g')
-        .attr('class', 'axis x-axis')
-        .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(x));
-    
-    // Add X axis label
-    svg.append("text")
-        .attr("transform", `translate(${width/2}, ${height + margin.bottom - 10})`)
-        .style("text-anchor", "middle")
-        .text("Number of Reviews");
-    
-    // Add Y axis
-    svg.append('g')
-        .attr('class', 'axis y-axis')
+    svg.append("g")
         .call(d3.axisLeft(y));
-    
-    // Add Y axis label
-    svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x", 0 - (height / 2))
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Price ($)");
-    
-    // Add grid lines
-    svg.append("g")
-        .attr("class", "grid")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x)
-            .tickSize(-height)
-            .tickFormat("")
-        )
-        .style("stroke-dasharray", "3,3")
-        .style("stroke-opacity", 0.2);
-    
-    svg.append("g")
-        .attr("class", "grid")
-        .call(d3.axisLeft(y)
-            .tickSize(-width)
-            .tickFormat("")
-        )
-        .style("stroke-dasharray", "3,3")
-        .style("stroke-opacity", 0.2);
-    
-    // Create tooltip div
-    const tooltip = d3.select("body").append("div")
+
+    // Create color scale for room types
+    const roomTypes = [...new Set(data.map(d => d.room_type))];
+    const color = d3.scaleOrdinal()
+        .domain(roomTypes)
+        .range(["#4e79a7", "#f28e2c", "#e15759"]);
+
+    // Create size scale for minimum nights
+    const size = d3.scaleLinear()
+        .domain([d3.min(data, d => d.min_nights), d3.max(data, d => d.min_nights)])
+        .range([5, 20]);
+
+    // Create tooltip
+    const tooltip = d3.select("body")
+        .append("div")
         .attr("class", "tooltip")
-        .style("opacity", 0);
-    
+        .style("opacity", 0)
+        .style("position", "absolute")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px");
+
     // Add bubbles
-    svg.selectAll('.bubble')
+    svg.selectAll("circle")
         .data(data)
         .enter()
-        .append('circle')
-        .attr('class', 'bubble')
-        .attr('cx', d => x(d.x))
-        .attr('cy', d => y(d.y))
-        .attr('r', 0) // Start with radius 0 for animation
-        .style('fill', d => color(d.group))
-        .style('opacity', 0.7)
+        .append("circle")
+        .attr("cx", d => x(d.reviews))
+        .attr("cy", d => y(d.price))
+        .attr("r", d => size(d.min_nights))
+        .style("fill", d => color(d.room_type))
+        .style("opacity", 0.7)
+        .attr("stroke", "white")
         .on("mouseover", function(event, d) {
-            d3.select(this)
-                .transition()
-                .duration(200)
-                .style('opacity', 1);
-            
             tooltip.transition()
                 .duration(200)
-                .style("opacity", 0.9);
-            
-            tooltip.html(`<strong>${d.group}</strong><br>Reviews: ${Math.round(d.x)}<br>Price: $${Math.round(d.y)}<br>Min Nights: ${Math.round(d.size)}`)
+                .style("opacity", .9);
+            tooltip.html(`Room Type: ${d.room_type}<br/>Price: $${d.price}<br/>Reviews: ${d.reviews}<br/>Min Nights: ${d.min_nights}`)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
+            d3.select(this).style("opacity", 1).attr("stroke", "black");
         })
         .on("mouseout", function() {
-            d3.select(this)
-                .transition()
-                .duration(200)
-                .style('opacity', 0.7);
-            
             tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
-        })
-        // Add animation
-        .transition()
-        .duration(800)
-        .attr('r', d => size(d.size));
-    
-    // Add a title
-    svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", 0 - (margin.top / 2))
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("font-weight", "bold")
-        .text("Room Type, Reviews, and Price Relationship");
-    
-    // Add legend
+            d3.select(this).style("opacity", 0.7).attr("stroke", "white");
+        });
+
+    // Add legend for room types
     const legend = svg.append("g")
         .attr("class", "legend")
-        .attr("transform", `translate(${width + 20}, 0)`);
-    
-    const roomTypes = ["Entire home/apt", "Private room", "Shared room"];
-    
+        .attr("transform", `translate(${width - 150}, 0)`);
+
     roomTypes.forEach((type, i) => {
         const legendRow = legend.append("g")
             .attr("transform", `translate(0, ${i * 20})`);
         
-        legendRow.append("rect")
-            .attr("width", 10)
-            .attr("height", 10)
-            .attr("fill", color(type));
+        legendRow.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 6)
+            .style("fill", color(type));
         
         legendRow.append("text")
-            .attr("x", 20)
-            .attr("y", 10)
-            .attr("text-anchor", "start")
+            .attr("x", 10)
+            .attr("y", 5)
             .style("font-size", "12px")
             .text(type);
     });
-    
+
     // Add legend for bubble size
-    legend.append("text")
+    const sizeLegend = svg.append("g")
+        .attr("class", "legend")
+        .attr("transform", `translate(${width - 150}, ${roomTypes.length * 20 + 20})`);
+
+    sizeLegend.append("text")
         .attr("x", 0)
-        .attr("y", 80)
-        .attr("text-anchor", "start")
+        .attr("y", 0)
         .style("font-size", "12px")
-        .style("font-weight", "bold")
-        .text("Bubble Size:");
-    
-    legend.append("text")
-        .attr("x", 0)
-        .attr("y", 95)
-        .attr("text-anchor", "start")
-        .style("font-size", "12px")
-        .text("Minimum Nights");
-    
-    // Calculate and add group centroids for annotation
-    const groups = d3.group(data, d => d.group);
-    
-    groups.forEach((groupData, groupName) => {
-        const avgX = d3.mean(groupData, d => d.x);
-        const avgY = d3.mean(groupData, d => d.y);
-        
-        svg.append("circle")
-            .attr("cx", x(avgX))
-            .attr("cy", y(avgY))
-            .attr("r", 8)
-            .style("fill", "none")
-            .style("stroke", color(groupName))
-            .style("stroke-width", 2)
-            .style("stroke-dasharray", "3,3");
-        
-        svg.append("text")
-            .attr("x", x(avgX))
-            .attr("y", y(avgY) - 15)
-            .attr("text-anchor", "middle")
-            .style("font-size", "11px")
-            .style("font-weight", "bold")
-            .text(`${groupName} center`);
-    });
+        .text("Bubble size = Min Nights");
+
+    // Add labels
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", `translate(${width/2}, ${height + margin.bottom - 10})`)
+        .text("Number of Reviews");
+
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left + 15)
+        .attr("x", -height / 2)
+        .text("Price ($)");
 }
