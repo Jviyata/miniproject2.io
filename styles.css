@@ -1,11 +1,11 @@
 /* General styles */
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #1a1a1a;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #f4f4f8;
 }
 
 .container {
@@ -16,88 +16,110 @@ body {
 
 header {
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 0;
     background-color: #0d0d0d;
     color: #f4f4f4;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    letter-spacing: 0.05em;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    letter-spacing: 0.07em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+header:hover {
+    transform: translateY(-5px);
 }
 
 h1 {
     margin: 0;
-    font-size: 3.5em;
-    font-weight: 700;
+    font-size: 4em;
+    font-weight: 800;
 }
 
 h2, h3 {
     color: #0d0d0d;
-    font-weight: 600;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 p.intro {
-    font-size: 1.3em;
+    font-size: 1.4em;
     max-width: 850px;
     margin: 20px auto;
-    color: #666;
+    color: #555;
+    line-height: 1.8;
 }
 
 /* Section styles */
 section {
     margin-bottom: 50px;
     background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Chart and insight container */
 .chart-insight-wrapper {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     align-items: flex-start;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     flex-wrap: wrap;
 }
 
 .chart-container {
     flex: 2;
-    min-width: 450px;
+    min-width: 500px;
     margin-bottom: 30px;
 }
 
 .insight-box {
     flex: 1;
     background-color: #f4f4f4;
-    border-left: 6px solid #1a1a1a;
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
+    border-left: 8px solid #1a1a1a;
+    padding: 25px;
+    border-radius: 0 10px 10px 0;
     margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
+}
+
+.insight-box:hover {
+    background-color: #eaeaea;
 }
 
 .insight-box h3 {
     margin-top: 0;
     color: #1a1a1a;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 /* Charts */
 #bar-chart, #line-chart, #bubble-chart {
     width: 100%;
-    height: 420px;
+    height: 450px;
     margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Tooltip styles */
 .tooltip {
     position: absolute;
     padding: 12px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     pointer-events: none;
     font-size: 14px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.3s ease;
 }
 
 /* Responsive adjustments */
@@ -107,7 +129,7 @@ section {
     }
 
     #bar-chart, #line-chart, #bubble-chart {
-        height: 300px;
+        height: 320px;
     }
 
     .insight-box {
@@ -115,6 +137,6 @@ section {
     }
 
     h1 {
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
 }
