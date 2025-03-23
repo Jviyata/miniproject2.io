@@ -1,7 +1,7 @@
 // Import chart modules
-import { createBarChart } from './barChart.js';
-import { createLineChart } from './lineChart.js';
-import { createBubbleChart } from './bubbleChart.js';
+import { createBarChart } from 'js/barChart.js';
+import { createLineChart } from 'js/lineChart.js';
+import { createBubbleChart } from 'js/bubbleChart.js';
 
 // Sample data for the charts (would be loaded from an API/CSV in a real app)
 // NYC Airbnb dataset sample
