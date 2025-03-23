@@ -70,7 +70,7 @@ p.intro {
 /* Section Styles */
 section {
     margin-bottom: 50px;
-    background-color: #e8e8e8; /* Light gray for contrast */
+    background-color: #e8e8e8;
     padding: 35px;
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
@@ -80,7 +80,7 @@ section {
 
 section:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    background-color: #d4d4d4; /* Slightly darker on hover */
+    background-color: #d4d4d4;
 }
 
 /* Chart and Insight Container */
@@ -100,7 +100,7 @@ section:hover {
 
 .insight-box {
     flex: 1;
-    background-color: #ffffff; /* White for better contrast */
+    background-color: #ffffff;
     border-left: 6px solid #1a1a1a;
     padding: 25px;
     border-radius: 10px;
@@ -128,7 +128,7 @@ section:hover {
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background-color: #fafafa; /* Light background for visibility */
+    background-color: #fafafa;
 }
 
 /* Tooltip Styles */
