@@ -2,10 +2,10 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.7;
-    color: #1a1a1a;
+    color: #000000; /* Black text */
     margin: 0;
     padding: 0;
-    background-color: #f8f4e1; /* Cream background */
+    background-color: #F5EEDC; /* Cream background */
 }
 
 .container {
@@ -16,108 +16,105 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #5568af; /* Deep Blue */
-    color: #ffffff; /* White Text */
+    background-color: #FE4F2D; /* Orange-red background */
+    color: #FFFFFF; /* White text */
     text-align: center;
-    padding: 80px 0;
-    margin-bottom: 50px;
-    border-radius: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    transition: transform 0.4s ease;
+    padding: 50px 20px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 h1 {
     margin: 0;
-    font-size: 3.5em;
-    font-weight: 800;
-    color: #ffffff; /* White Text */
+    font-size: 2.8em;
+    font-weight: 600;
+    color: #FFFFFF; /* White text */
 }
 
 h2, h3 {
-    margin-bottom: 15px;
-    font-weight: 700;
-    color: #5568af;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #000000; /* Black text */
 }
 
 p.intro {
-    font-size: 1.3em;
-    color: #f37826; /* Sunset */
-    margin: 25px auto;
-    max-width: 800px;
-    line-height: 1.8;
+    font-size: 1.2em;
+    margin: 20px auto;
+    max-width: 700px;
+    color: #000000; /* Black text */
+    line-height: 1.75;
 }
 
 /* Section Styles */
 section {
-    background-color: #cee6ee; /* Light Blue */
-    margin-bottom: 60px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-    transition: box-shadow 0.3s, background-color 0.3s;
-}
-
-section:hover {
-    background-color: #cdd629; /* Lime */
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    background-color: #E5E3D4; /* Secondary cream tone */
+    margin-bottom: 40px;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    color: #000000; /* Black text */
 }
 
 /* Chart and Insight Container */
 .chart-insight-wrapper {
     display: flex;
-    gap: 50px;
-    margin-bottom: 70px;
+    gap: 30px;
+    margin-bottom: 50px;
     flex-wrap: wrap;
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 .chart-container {
     flex: 2;
-    min-width: 500px;
-    margin-bottom: 30px;
+    min-width: 460px;
+    margin-bottom: 20px;
 }
 
 .insight-box {
     flex: 1;
-    background-color: #ffffff;
-    padding: 35px;
-    margin-bottom: 30px;
-    border-left: 8px solid #f37826;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
+    background-color: #F5EEDC; /* Cream background */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 6px solid #808000; /* Olive accent */
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    color: #000000; /* Black text */
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .insight-box:hover {
-    background-color: #f8c9dd; /* Blush */
-    transform: translateY(-6px);
+    background-color: #E5E3D4; /* Slightly darker cream */
+    transform: translateY(-3px);
 }
 
 .insight-box h3 {
     margin-top: 0;
-    font-weight: 800;
-    color: #ec1763;
+    font-weight: 600;
+    color: #000000; /* Black text */
 }
 
 /* Charts */
 #bar-chart, #line-chart, #bubble-chart {
-    height: 450px;
-    margin: 0 auto 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    background-color: #f9f9f9;
+    height: 380px;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #FFFFFF; /* White background for contrast */
+    color: #000000; /* Black text */
 }
 
 /* Tooltip Styles */
 .tooltip {
     position: absolute;
-    padding: 14px;
-    background-color: #ffffff;
-    border: 1px solid #bbb;
-    border-radius: 10px;
-    box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    background-color: #E5E3D4; /* Light beige/cream */
+    border: 1px solid #808000; /* Olive accent */
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     font-size: 14px;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
+    color: #000000; /* Black text */
 }
