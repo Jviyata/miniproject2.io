@@ -77,7 +77,7 @@ export function createLineChart(data, selector) {
             tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
-            d3.select(this).attr("r", 5).attr("fill", "#69b3a2");
+            d3.select(this).attr("r", 5).attr("fill", "#690B22");
         });
 
     // Add labels
