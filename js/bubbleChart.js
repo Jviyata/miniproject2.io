@@ -36,7 +36,7 @@ export function createBubbleChart(data, selector) {
     const roomTypes = [...new Set(data.map(d => d.room_type))];
     const color = d3.scaleOrdinal()
         .domain(roomTypes)
-        .range(["#274060", "#335C81", "#13293D"]);
+        .range(["#274060", "#758E4F", "#CC5A71"]);
 
     // Create size scale for minimum nights
     const size = d3.scaleLinear()
