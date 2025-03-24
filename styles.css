@@ -17,38 +17,21 @@ body {
 /* Header Styles */
 header {
     background-color: #5568af; /* Deep Blue */
-    color: #f4f4f4;
+    color: #ffffff; /* White Text */
     text-align: center;
     padding: 80px 0;
     margin-bottom: 50px;
     border-radius: 24px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    position: relative;
     overflow: hidden;
     transition: transform 0.4s ease;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.08);
-    transform: skewX(-15deg);
-    pointer-events: none;
-}
-
-header:hover {
-    transform: translateY(-8px);
 }
 
 h1 {
     margin: 0;
     font-size: 3.5em;
     font-weight: 800;
-    color: #ec1763; /* Electric Pink */
+    color: #ffffff; /* White Text */
 }
 
 h2, h3 {
@@ -83,23 +66,23 @@ section:hover {
 /* Chart and Insight Container */
 .chart-insight-wrapper {
     display: flex;
-    gap: 35px;
-    margin-bottom: 50px;
+    gap: 50px;
+    margin-bottom: 70px;
     flex-wrap: wrap;
     align-items: flex-start;
 }
 
 .chart-container {
     flex: 2;
-    min-width: 480px;
-    margin-bottom: 25px;
+    min-width: 500px;
+    margin-bottom: 30px;
 }
 
 .insight-box {
     flex: 1;
     background-color: #ffffff;
-    padding: 30px;
-    margin-bottom: 25px;
+    padding: 35px;
+    margin-bottom: 30px;
     border-left: 8px solid #f37826;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
@@ -120,7 +103,7 @@ section:hover {
 /* Charts */
 #bar-chart, #line-chart, #bubble-chart {
     height: 450px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
     background-color: #f9f9f9;
