@@ -71,7 +71,7 @@ export function createLineChart(data, selector) {
             tooltip.html(`Minimum Nights: ${d.min_nights}<br/>Average Price: $${d.avg_price}`)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
-            d3.select(this).attr("r", 8).attr("fill", "#2E8B57");
+            d3.select(this).attr("r", 8).attr("fill", "#A94A4A");
         })
         .on("mouseout", function() {
             tooltip.transition()
