@@ -60,7 +60,7 @@ export function createBarChart(data, selector) {
         .attr("y", d => y(d.count))
         .attr("width", x.bandwidth())
         .attr("height", d => height - y(d.count))
-        .attr("fill", "#69b3a2")
+        .attr("fill", "#690B22")
         .on("mouseover", function(event, d) {
             const percentage = ((d.count / total) * 100).toFixed(1);
             tooltip.transition()
@@ -69,13 +69,13 @@ export function createBarChart(data, selector) {
             tooltip.html(`${d.neighborhood}<br/>${d.count} listings<br/>${percentage}% of total`)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
-            d3.select(this).attr("fill", "#2E8B57");
+            d3.select(this).attr("fill", "#A94A4A");
         })
         .on("mouseout", function() {
             tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
-            d3.select(this).attr("fill", "#69b3a2");
+            d3.select(this).attr("fill", "#690B22");
         });
 
     // Add labels
