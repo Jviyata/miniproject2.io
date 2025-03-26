@@ -5,68 +5,75 @@ body {
     color: #2E2E2E;
     margin: 0;
     padding: 0;
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
+    transition: background-color 0.3s ease;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 30px 20px;
+    padding: 40px 20px;
 }
 
 /* Header Styles */
 header {
-    background-color: #FE4F2D;
-    color: #808000;
+    background-color: #3A6351;
+    color: #FFFFFF;
     text-align: center;
     padding: 60px 20px;
     margin-bottom: 40px;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+header:hover {
+    transform: translateY(-5px);
 }
 
 h1 {
     margin: 0;
-    color: #FFFFFF;
-    font-size: 3em;
+    font-size: 3.5em;
     font-weight: 700;
-    color: #808000;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 header h2 {
-    margin-top: 5px;
-    font-size: 0.9em;
+    margin-top: 8px;
+    font-size: 1.3em;
     font-weight: 400;
-    color: #FFFFFF;
-    opacity: 0.75;
-    font-size: 1.1em;
-    font-weight: 400;
-    color: #FFFFFF;
+    color: #D1D5DB;
     opacity: 0.85;
 }
 
 h2, h3 {
-    margin-bottom: 15px;
-    font-weight: 700;
-    font-size: 1.2em;
-    color: #808000;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #3A6351;
 }
 
 p.intro {
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin: 25px auto;
     max-width: 750px;
-    color: #2E2E2E;
+    color: #4B5563;
     line-height: 1.8;
 }
 
 /* Section Styles */
 section {
-    background-color: #F4F4F4;
+    background-color: #FFFFFF;
     margin-bottom: 45px;
     padding: 30px;
-    border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s;
+}
+
+section:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Chart and Insight Container */
@@ -81,53 +88,68 @@ section {
 
 .chart-container {
     flex: 2;
-    min-width: 300px;
+    min-width: 320px;
     margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .insight-box {
     flex: 1;
-    background-color: #FFFFFF;
+    background-color: #F9FAFB;
     padding: 25px;
     margin-bottom: 25px;
-    border-left: 6px solid #808000;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    color: #2E2E2E;
+    border-left: 6px solid #3A6351;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    color: #374151;
     transition: transform 0.3s, background-color 0.3s;
 }
 
 .insight-box:hover {
-    background-color: #E5E3D4;
+    background-color: #E5E7EB;
     transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .insight-box h3 {
     margin-top: 0;
     font-weight: 700;
-    color: #2E2E2E;
+    color: #1F2937;
 }
 
 /* Charts */
 #bar-chart, #line-chart, #bubble-chart {
     height: 400px;
     margin: 0 auto 20px;
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     background-color: #FFFFFF;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#bar-chart:hover, #line-chart:hover, #bubble-chart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
 /* Tooltip Styles */
 .tooltip {
     position: absolute;
     padding: 12px;
-    background-color: #E5E3D4;
-    border: 1px solid #808000;
-    border-radius: 4px;
+    background-color: #FFFFFF;
+    border: 1px solid #3A6351;
+    border-radius: 6px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
     font-size: 14px;
     pointer-events: none;
-    color: #2E2E2E;
+    color: #374151;
+    transition: opacity 0.2s ease;
+    opacity: 0;
+}
+
+.tooltip.show {
+    opacity: 1;
 }
 
 /* Responsive Design */
