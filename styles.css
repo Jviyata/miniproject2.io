@@ -10,6 +10,7 @@ body {
 
 .container {
     width: 100%;
+    max-width: 1200px;  /* Added max width for better layout control */
     margin: 0 auto;
     padding: 30px 20px;
     box-sizing: border-box;
@@ -18,10 +19,10 @@ body {
 /* Header Styles */
 header {
     background-color: #FE4F2D;
-    color: #808000;
+    color: #FFFFFF;  /* White text for better contrast */
     text-align: center;
     padding: 60px 20px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     border-radius: 8px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -30,22 +31,20 @@ h1 {
     margin: 0;
     font-size: 3em;
     font-weight: 700;
-    color: #808000;
 }
 
 header h2 {
     margin-top: 10px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 400;
-    color: #FFFFFF;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 h2, h3 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: 700;
-    font-size: 1.2em;
-    color: #808000;
+    font-size: 1.4em;
+    color: #2E2E2E;
 }
 
 p.intro {
@@ -59,71 +58,68 @@ p.intro {
 /* Section Styles */
 section {
     background-color: #F4F4F4;
-    margin-bottom: 45px;
-    padding: 30px;
-    border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 60px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 /* Chart and Insight Container */
 .chart-container-wrapper {
     display: flex;
-    gap: 40px;
-    margin-bottom: 60px;
+    gap: 60px;  /* Added consistent spacing */
+    margin-bottom: 80px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;  /* Balanced alignment */
 }
 
 .chart-container {
     flex: 2;
-    min-width: 300px;
-    width: 100%;
-    height: 600px;
-    margin-bottom: 25px;
+    min-width: 400px;  /* Wider min-width for better layout */
+    height: 550px;
     box-sizing: border-box;
+    margin-bottom: 25px;
 }
 
-/* New Header for Each Chart */
+/* Chart Header */
 .chart-header {
-    background-color: #FE4F2D;
-    color: #808000;
+    background-color: #2E2E2E;  /* Darker for contrast */
+    color: #FFFFFF;
     text-align: center;
-    padding: 15px 20px;
-    border-radius: 6px 6px 0 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .chart-header h3 {
     margin: 0;
     font-weight: 700;
-    font-size: 1.2em;
-    color: #FFFFFF;
+    font-size: 1.3em;
 }
 
 /* Insight Box Styles */
 .insight-container {
     flex: 1;
-    min-width: 300px;
-    width: 100%;
-    margin-top: 25px; /* Added margin for space between chart and insight */
+    min-width: 350px;
+    margin-top: 0;  /* Removed unnecessary margin */
     box-sizing: border-box;
 }
 
 .insight-box {
     background-color: #FFFFFF;
-    padding: 25px;
+    padding: 30px;
     margin-bottom: 25px;
-    border-left: 6px solid #808000;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 8px solid #FE4F2D;  /* Highlight color on the left */
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     color: #2E2E2E;
     transition: transform 0.3s, background-color 0.3s;
 }
 
 .insight-box:hover {
     background-color: #E5E3D4;
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 }
 
 .insight-box h3 {
@@ -137,8 +133,8 @@ section {
     width: 100%;
     height: 100%;
     margin: 0 auto 20px;
-    border-radius: 6px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     background-color: #FFFFFF;
 }
 
@@ -146,25 +142,25 @@ section {
 .tooltip {
     position: absolute;
     padding: 12px;
-    background-color: #E5E3D4;
-    border: 1px solid #808000;
+    background-color: #FE4F2D;
+    border: 1px solid #2E2E2E;
     border-radius: 4px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     font-size: 14px;
     pointer-events: none;
-    color: #2E2E2E;
+    color: #FFFFFF;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .chart-container-wrapper {
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;  /* More consistent gap */
     }
     header {
         padding: 40px 15px;
     }
     p.intro {
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
 }
