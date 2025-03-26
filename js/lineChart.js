@@ -44,26 +44,36 @@ export function createLineChart(data, selector) {
         .style("border-radius", "5px")
         .style("padding", "10px");
 
-    // Add the line
+    // Add the line with animation
     svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#69b3a2")
+        .attr("stroke", "#DC143C")  // Crimson color
         .attr("stroke-width", 2.5)
         .attr("d", d3.line()
             .x(d => x(d.min_nights))
             .y(d => y(d.avg_price))
-        );
+        )
+        .attr("stroke-dasharray", function() { 
+            return this.getTotalLength(); 
+        })
+        .attr("stroke-dashoffset", function() { 
+            return this.getTotalLength(); 
+        })
+        .transition()
+        .duration(2000)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0);
 
-    // Add data points
+    // Add data points with animation
     svg.selectAll("dot")
         .data(data)
         .enter()
         .append("circle")
         .attr("cx", d => x(d.min_nights))
         .attr("cy", d => y(d.avg_price))
-        .attr("r", 5)
-        .attr("fill", "#69b3a2")
+        .attr("r", 0)
+        .attr("fill", "#DC143C")  // Crimson color
         .on("mouseover", function(event, d) {
             tooltip.transition()
                 .duration(200)
@@ -77,13 +87,17 @@ export function createLineChart(data, selector) {
             tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
-            d3.select(this).attr("r", 5).attr("fill", "#690B22");
-        });
+            d3.select(this).attr("r", 5).attr("fill", "#DC143C");
+        })
+        .transition()
+        .duration(1000)
+        .delay((d, i) => i * 50)  // Stagger the animation of the dots
+        .attr("r", 5);
 
     // Add labels
     svg.append("text")
         .attr("text-anchor", "middle")
-        .attr("transform", `translate(${width/2}, ${height + margin.bottom - 10})`)
+        .attr("transform", `translate(${width / 2}, ${height + margin.bottom - 10})`)
         .text("Minimum Nights Required");
 
     svg.append("text")
