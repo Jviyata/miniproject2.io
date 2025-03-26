@@ -88,6 +88,7 @@ section {
     flex: 1;
     background-color: #FFFFFF;
     padding: 25px;
+    margin-top: 25px; /* Added margin for space between chart and insight box */
     margin-bottom: 25px;
     border-left: 6px solid #808000;
     border-radius: 6px;
