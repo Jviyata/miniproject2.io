@@ -1,4 +1,4 @@
-/* Base Reset & Typography */
+ /* Base Reset & Typography */
 body, h1, h2, h3, p, ul, li {
   margin: 0;
   padding: 0;
@@ -18,30 +18,22 @@ body {
   padding: 0 20px;
 }
 
-/* Header & Navigation */
+/* Header Styles */
 header {
-  background-color: #3D5329; /* Deep Olive Green for header background */
+  background-color: #3D5329; /* Deep Olive Green */
   color: #FFFFFF; /* White text */
-  padding: 20px 30px;
+  height: 100vh; /* Full height of the page */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0 20px;
 }
 
 header h1 {
-  font-size: 1.8em;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-nav a {
-  color: #FFFFFF;
-  text-decoration: none;
-  font-weight: 600;
+  font-size: 3em;
+  font-weight: 700;
+  margin: 0;
 }
 
 /* Main Layout Container */
@@ -49,7 +41,8 @@ nav a {
   display: grid;
   grid-template-columns: 250px 1fr;
   gap: 20px;
-  padding: 20px 0;
+  padding: 40px 0;
+  background-color: #FFFFFF; /* Cool White */
 }
 
 /* Sidebar Styles */
