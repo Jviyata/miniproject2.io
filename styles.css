@@ -4,10 +4,18 @@ body, h1, h2, h3, p, ul, li {
   padding: 0;
   font-family: 'Inter', sans-serif;
 }
+
 body {
   background-color: #FFFFFF; /* Cool White */
   color: #3D5329; /* Deep Olive Green for primary text */
   line-height: 1.6;
+}
+
+/* Container for overall page content with side spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Header & Navigation */
@@ -19,26 +27,29 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+
 header h1 {
   font-size: 1.8em;
 }
+
 nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
 }
+
 nav a {
   color: #FFFFFF;
   text-decoration: none;
   font-weight: 600;
 }
 
-/* Main Layout */
-main {
+/* Main Layout Container */
+.main-container {
   display: grid;
   grid-template-columns: 250px 1fr;
   gap: 20px;
-  padding: 20px 30px;
+  padding: 20px 0;
 }
 
 /* Sidebar Styles */
@@ -46,7 +57,7 @@ main {
   background-color: #F5F1E6; /* Soft Cream */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Content Area Styles */
@@ -54,7 +65,7 @@ main {
   background-color: #FFFFFF; /* Cool White */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Section Styles within Content */
@@ -68,9 +79,10 @@ main {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  main {
+  .main-container {
     grid-template-columns: 1fr;
   }
+  
   /* Sidebar moves below content on small screens */
   .sidebar {
     order: 2;
