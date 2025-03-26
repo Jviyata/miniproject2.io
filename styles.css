@@ -10,7 +10,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;  /* Added max width for better layout control */
+    max-width: 1200px;  
     margin: 0 auto;
     padding: 30px 20px;
     box-sizing: border-box;
@@ -19,148 +19,194 @@ body {
 /* Header Styles */
 header {
     background-color: #FE4F2D;
-    color: #FFFFFF;  /* White text for better contrast */
+    color: #FFFFFF;
     text-align: center;
-    padding: 60px 20px;
-    margin-bottom: 50px;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 80px 20px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     margin: 0;
-    font-size: 3em;
+    font-size: 3.5em;
     font-weight: 700;
-}
-
-header h2 {
-    margin-top: 10px;
-    font-size: 1.2em;
-    font-weight: 400;
-    opacity: 0.9;
-}
-
-h2, h3 {
-    margin-bottom: 20px;
-    font-weight: 700;
-    font-size: 1.4em;
-    color: #2E2E2E;
 }
 
 p.intro {
-    font-size: 1.3em;
+    font-size: 1.4em;
+    max-width: 800px;
     margin: 25px auto;
-    max-width: 750px;
-    color: #2E2E2E;
     line-height: 1.8;
+    color: #FDFDFD;
 }
 
 /* Section Styles */
 section {
     background-color: #F4F4F4;
     margin-bottom: 60px;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Chart and Insight Container */
-.chart-container-wrapper {
-    display: flex;
-    gap: 60px;  /* Added consistent spacing */
-    margin-bottom: 80px;
-    flex-wrap: wrap;
-    justify-content: space-evenly;  /* Balanced alignment */
-}
-
-.chart-container {
-    flex: 2;
-    min-width: 400px;  /* Wider min-width for better layout */
-    height: 550px;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-}
-
-/* Chart Header */
-.chart-header {
-    background-color: #2E2E2E;  /* Darker for contrast */
-    color: #FFFFFF;
-    text-align: center;
-    padding: 20px;
-    border-radius: 8px 8px 0 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.chart-header h3 {
-    margin: 0;
-    font-weight: 700;
-    font-size: 1.3em;
-}
-
-/* Insight Box Styles */
-.insight-container {
-    flex: 1;
-    min-width: 350px;
-    margin-top: 0;  /* Removed unnecessary margin */
-    box-sizing: border-box;
-}
-
-.insight-box {
-    background-color: #FFFFFF;
-    padding: 30px;
-    margin-bottom: 25px;
-    border-left: 8px solid #FE4F2D;  /* Highlight color on the left */
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    color: #2E2E2E;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.insight-box:hover {
-    background-color: #E5E3D4;
+section:hover {
     transform: translateY(-5px);
 }
 
-.insight-box h3 {
-    margin-top: 0;
-    font-weight: 700;
+h2, h3 {
     color: #2E2E2E;
+    font-weight: 700;
+    margin-bottom: 25px;
 }
 
-/* Charts */
-#bar-chart, #line-chart, #bubble-chart {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto 20px;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+p {
+    font-size: 1.2em;
+    color: #4A4A4A;
+}
+
+/* Chart Section Layout */
+#visualization-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-evenly;
+}
+
+.chart-container {
+    flex: 1 1 calc(50% - 40px); /* Two-column layout */
+    min-width: 400px;
+    background: #FFF;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.chart-container:hover {
+    transform: scale(1.03);
+}
+
+.chart-description {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Insight Box Styling */
+.insight-box {
     background-color: #FFFFFF;
+    padding: 30px;
+    border-left: 10px solid #FE4F2D;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    color: #2E2E2E;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-/* Tooltip Styles */
-.tooltip {
-    position: absolute;
-    padding: 12px;
-    background-color: #FE4F2D;
-    border: 1px solid #2E2E2E;
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    pointer-events: none;
-    color: #FFFFFF;
+.insight-box:hover {
+    background-color: #FFF4EC;
+    transform: translateY(-5px);
+}
+
+/* Comparison Section */
+.comparison-container {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.comparison-item {
+    flex: 1;
+    min-width: 400px;
+    padding: 30px;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.comparison-item:hover {
+    transform: scale(1.03);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.1em;
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+/* Storytelling Section */
+.storytelling {
+    background: #FFF;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.storytelling:hover {
+    transform: scale(1.03);
+}
+
+/* Conclusion Section */
+#conclusion {
+    text-align: center;
+    background: #FE4F2D;
+    color: #FFF;
+    padding: 60px 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+#conclusion p {
+    color: #FFF;
+    font-size: 1.3em;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .chart-container-wrapper {
+@media (max-width: 1024px) {
+    .chart-container {
+        flex: 1 1 calc(100% - 40px); /* Full-width on smaller screens */
+    }
+    
+    .comparison-container {
         flex-direction: column;
-        gap: 30px;  /* More consistent gap */
     }
+}
+
+@media (max-width: 768px) {
     header {
-        padding: 40px 15px;
+        padding: 60px 15px;
     }
+    
+    h1 {
+        font-size: 2.5em;
+    }
+
     p.intro {
         font-size: 1.2em;
     }
+
+    .container {
+        padding: 20px;
+    }
+
+    section {
+        padding: 30px;
+    }
 }
+
