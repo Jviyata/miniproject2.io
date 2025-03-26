@@ -59,7 +59,7 @@ section {
     margin-bottom: 60px;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center; /* Center the charts horizontally */
 }
 
 .chart-container {
